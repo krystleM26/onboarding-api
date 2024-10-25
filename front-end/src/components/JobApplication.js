@@ -6,12 +6,12 @@ const JobApplication = () => {
         email: '',
         phone: '',
         resume: null,
-        coverLetter: '',
+        coverLetter: null,
       });
 
       const handleChange = (e) => {
         const { name, value, files } = e.target;
-        if (name === 'resume') {
+        if (name === 'resume' || name === 'coverLetter') {
           setFormData({ ...formData, resume: files[0] });
         } else {
           setFormData({ ...formData, [name]: value });
@@ -73,7 +73,7 @@ const JobApplication = () => {
 
     <div>
       <label>Cover Letter:</label>
-      <textarea name="coverLetter" value={formData.coverLetter} onChange={handleChange}></textarea>
+      <input type='file' name="coverLetter"  onChange={handleChange} required />
     </div>
 
     <button type="submit">Submit Application</button>
